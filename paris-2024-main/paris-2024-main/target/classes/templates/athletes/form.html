@@ -1,0 +1,38 @@
+{{> include/header}}
+<h2 class="h2">{{title}}</h2>
+<div>
+    {{#athlete}}
+    <form method="post" action="/saveAthlete">
+        <input type="hidden" name="id" value="{{id}}">
+        <div class="form-group">
+            <label for="firstNameInput">Prénom</label>
+            <input
+                    type="text"  value="{{prenom}}" name="prenom" class="form-control" id="firstNameInput"
+                    aria-describedby="prenomHelp" placeholder="Saisir le prénom"> <small
+                id="prenomHelp" class="form-text text-muted">Merci d'écrire le prénom de l'athlète.</small>
+        </div>
+        <div class="form-group">
+            <label for="nomInput">Nom</label>
+            <input
+                    type="text" value="{{nom}}" name="nom" class="form-control" id="nomInput"
+                    aria-describedby="nomHelp" placeholder="Saisir le nom"> <small
+                id="nomHelp" class="form-text text-muted">Merci d'écrire le nom de l'athlète.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="pays">Pays :</label>
+            <select id="pays" class="form-control" name="paysId">
+                <option value="">Sélectionnez un pays</option>
+                {{#listPays}}
+                <option value="{{object.id}}" {{#selected}}selected{{/selected}}>{{object.nom}}</option>
+                {{/listPays}}
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+        <a href="/" class="btn btn-danger">Annuler</a>
+    </form>
+    {{/athlete}}
+</div>
+{{> include/footer}}
