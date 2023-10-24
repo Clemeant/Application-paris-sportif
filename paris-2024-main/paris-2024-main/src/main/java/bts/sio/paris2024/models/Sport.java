@@ -19,15 +19,4 @@ public class Sport{
 
 }
 
-public void modifySport(Sport sport) {
-  sport.setName("Nouveau nom du sport");
-}
-public void deleteSport(int idSport) {
-  Sport sport = sportRepository.findById(idSport);
 
-  sportRepository.delete(sport);
-}
-public List<Sport> listSports() {
-  // Retourne la liste de tous les sports
-  return sportRepository.findAll();
-}
