@@ -28,4 +28,17 @@ public class AthleteService {
     public Athlete saveAthlete(Athlete athlete) {
         return athleteRepository.save(athlete);
     }
+
+    public List<Epreuve> listEvents(Athlete athlete) {
+    List<Epreuve> épreuves = new ArrayList<>();
+    for (Olympiade olympiade : athlete.getOlympiades()) {
+        for (Epreuve épreuve : olympiade.getEpreuves()) {
+            if (!épreuves.contains(épreuve)) {
+                épreuves.add(épreuve);
+            }
+        }
+    }
+    return épreuves;
+}
+
 }
